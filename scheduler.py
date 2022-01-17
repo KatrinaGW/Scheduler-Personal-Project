@@ -1,11 +1,9 @@
 """
-Create a weekly schedule for employees based on availability and position
 
-Have flags such as #name #maxhours #availableDays #positions in the input file
-
-Assume that available days are given in weekly format
-
-Needed classes: person, weekly schedule, scheduler, day?
+Please note that this project is an ongoing work in progress. This is why there are no comments, coding 
+standards are not yet strictly adhered to, efficiency is not optimal, and not all edge cases have been 
+accounted for. To see examples of projects which have the aforementioned attributes, please see the other 
+repositories in my GitHub, under my username KatrinaGW. 
 
 """
 
@@ -25,14 +23,14 @@ class WeeklyScheduler():
 	def __init__(self, skipDays = [], hasWeekends = False, dailyPositions = [], allPositions = [], employees = [], 
 		days = ["MON", "TUE", "WED", "THU", "FRI"]):
 		self.skipDays = skipDays
-		self.dailyPositions = dailyPositions #These need getters and setters and are the positions which MUST be filled everyday
-		self.allPositions = allPositions #These need getters and setters
+		self.dailyPositions = dailyPositions 
+		self.allPositions = allPositions 
 		self.employees = employees
 		self.unfilledPositions = []
 
 		self.longest = 0
 
-		self.shiftLength = 8 ##Improve versatily of this later. 
+		self.shiftLength = 8 #Improve versatily of this later. 
 
 		self.employeesPerPos = {} #Keys are the positions, values are the employees who can work the position
 		self.__getPosEmployees()
@@ -49,7 +47,7 @@ class WeeklyScheduler():
 
 	def addEmployee(self, employee):
 		self.employees.append(employee)
-		self.employeesPerPos={} #See if there's a way to avoid having to reset this list
+		self.employeesPerPos={} 
 
 		self.__getPosEmployees() 
 
@@ -127,7 +125,7 @@ class WeeklyScheduler():
 		return self.unfilledPositions
 
 	def __fillPos(self, day, posList, offInfo = {}):
-		#Offinfo should be a dictionar, employees are keys their values are their off days
+		#Offinfo should be a dictionary, employees are keys their values are their off days
 		unfilled = []
 		offEmps = list(offInfo.keys())
 		
@@ -241,9 +239,6 @@ class WeeklyScheduler():
 
 		fileOut.write(printed)
 
-
-
-
 class TextProcessor():
 
 	def openFile(self, fileName = "", permission = "r"):
@@ -309,9 +304,7 @@ class TextProcessor():
 		if(skipDays!=[]):
 			for day in skipDays:
 				assert len(day)==3, "Incorrect input, name of day not proper"
-				if(day[0:3].lower() in ["mon", "tue", "wed", "thur", "fri", "sat", "sun"]):
-
-					#skips.append(day[0].upper()+day[1:3].lower())
+				if(day[0:3].lower() in ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]):
 					skips.append(day.upper())
 				else:
 					warning = "The skip day {} is not in the regular schedule".format(day)
@@ -337,6 +330,8 @@ class TextProcessor():
 			scheduleInfo["SkipDays"] = None
 
 		return scheduleInfo
+
+#TODO: Move the following functions, except main, into an existing or a new class
 
 def addScheduleInfo(processor, schedule, line):
 	info = processor.getScheduleDetails(line)
@@ -400,7 +395,7 @@ def makeSchedule(handle, processor):
 	while(safe):
 		line = line.split()
 
-		if("#name" in line): #See if there's a better way to flag whether this is person info or not
+		if("#name" in line):
 			addPerson(processor, schedule, line)
 
 		elif("#ScheduleInformation" in line):
@@ -421,44 +416,10 @@ def makeSchedule(handle, processor):
 	schedule.fillWeek()
 
 	schedule.fillWeek({"Regina" : "MON"})
-	schedule.printSchedule()
-
-
-
-def testing():
-	employees = []
-	allPos = []
-
-	p = TextProcessor()
-	h = p.openFile("testInput")
-	safe, line = p.getNextLine(h) #Still have to set it to loop over all the lines
-
-	while(safe):
-		line = line.split()
-		personInfo = p.getFlagValues(["name", "position", "MaxHours", "AvailableDays"], line)
-		assert len(personInfo["MaxHours"]) == 1, "Cannot have more than 1 value for max hours"
-		person = Person(name = " ".join(personInfo["name"]), maxHours = personInfo["MaxHours"][0], availableDays = personInfo["AvailableDays"], positions = personInfo["position"])
-		employees.append(person)
-		safe, line = p.getNextLine(h)
-
-	h.close()
-
-	for person in employees:
-		for p in person.positions:
-			if(p not in allPos):
-				allPos.append(p)
-
-	s = WeeklyScheduler(hasWeekends = True, dailyPositions = ["Human"], allPositions = allPos, employees = employees)
-	s.fillWeek()
-	s.printSchedule()
-	with open("testingOut", "w") as fileOut:
-		s.printSchedule(fileOut)
-
-	
+	schedule.printSchedule()	
 
 
 def main():
-	#testing()
 
 	processor = TextProcessor()
 	inFile = input("Please Enter a File Name: ")
