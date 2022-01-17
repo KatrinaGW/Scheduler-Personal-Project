@@ -1,0 +1,8 @@
+#name Regina #position Evil-Queen Mayor Step-Mother Human #MaxHours 40 #AvailableDays MON TUE FRI
+#name Oliver Queen #position Playboy Mayor Prodigal-Son Arrow Human Hero #MaxHours 90 #AvailableDays SAT SUN WED FRI
+#name Dick Grayson #position Acrobat Student Teen-Titan Robin Nightwing Human Hero #MaxHours 30 #AvailableDays THU TUE WED FRI SUN
+#name Marinette #position Artist Designer Student LadyBug Human Hero #MaxHours 20 #AvailableDays FRI SAT THU SUN
+#name Dick Cheney #position VP Politician Republican Human #MaxHours 40 #AvailableDays MON WED FRI
+#name Taylor Swift #position Singer Songwriter Heartbreaker Human #MaxHours 30 #AvailableDays SAT SUN MON WED
+#name Megamind #position Hero Mayor Alien #MaxHours 40 #AvailableDays MON TUE WED THU FRI
+#name Adrien Agreste #position Hero Model Student Son #MaxHours 25 #AvailableDays SAT SUN FRI WED
