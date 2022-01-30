@@ -696,9 +696,6 @@ def makeSchedule(iHandle, oHandle, processor):
 	if(oHandle != sys.stdout):
 		print("Schedule has successfully been printed to output file")
 
-	
-
-
 def main():
 
 	#Create a processor for the input file
@@ -706,14 +703,20 @@ def main():
 
 	#Get an input file and create its handle
 	inFile = input("Please Enter an Input File Name: ")
-	iHandle = processor.openFile(inFile)
+	iHandle = processor.openFile(inFile, "r")
 
 	#Get an output file and create its handle
 	outFile = input("Please Enter the Output File Name or Hit Enter to Print the Schedule to the Standard Output: ")
 	if(outFile == ""):
 		oHandle = sys.stdout
 	else:
-		oHandle = open(outFile, "w")
+		oHandle = processor.openFile(outFile, "w")
+
+		#If the processor failed to open the output file, default to the standard output
+		if(oHandle is None):
+			oHandle = sys.stdout
+			print("Schedule will be Printed to Standard Output")
+
 
 	#If a valid input handle was created, create the schedule
 	if(iHandle is not None):
