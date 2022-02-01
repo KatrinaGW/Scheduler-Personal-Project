@@ -42,8 +42,4 @@ RUNNING INSTRUCTIONS
 * The weekly schedule, along with warnings about unfilled positions, will be printed to the standard output
 
 CURRENT VERSION NOTES
-* This is an ongoing work in progress, this is why coding 
-standards are not yet strictly adhered to, efficiency is not optimal, and not all edge cases have been 
-accounted for. To see examples of projects which have the aforementioned attributes, please see the other 
-repositories in my GitHub, under my username KatrinaGW. 
 * Plans for future functionality include: multiple shifts of varying lengths, wages and payroll, optional overtime. 
