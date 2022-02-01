@@ -1,9 +1,6 @@
 """
 
-Please note that this project is an ongoing work in progress. This is why coding 
-standards are not yet strictly adhered to, efficiency is not optimal, and not all edge cases have been 
-accounted for. To see examples of projects which have the aforementioned attributes, please see the other 
-repositories in my GitHub, under my username KatrinaGW. 
+Please note that this project is an ongoing work in progress. 
 
 """
 
