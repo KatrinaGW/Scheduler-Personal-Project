@@ -8,7 +8,7 @@ CONTENTS OF THIS FILE
 
 * Running Instructions
 
-* Notes about the Current Version
+* Notes
 
 
 INTRODUCTION
@@ -41,5 +41,5 @@ RUNNING INSTRUCTIONS
 * If the input files do not contain settings for the schedule, the user will be prompted for this information on the command line. Note that all but the skipdays responses will be case sensitive. 
 * The weekly schedule, along with warnings about unfilled positions, will be printed to the standard output
 
-CURRENT VERSION NOTES
+NOTES:
 * Plans for future functionality include: multiple shifts of varying lengths, wages and payroll, optional overtime. 
